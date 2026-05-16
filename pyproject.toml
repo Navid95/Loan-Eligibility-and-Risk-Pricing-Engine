@@ -1,0 +1,13 @@
+[tool.uv.workspace]
+members = ["services/rate_calculator", "services/audit_log"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
