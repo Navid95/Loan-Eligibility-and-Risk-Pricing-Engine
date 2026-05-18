@@ -11,3 +11,7 @@ select = ["E", "F", "I", "UP"]
 [tool.mypy]
 python_version = "3.12"
 strict = true
+
+[[tool.mypy.overrides]]
+module = "apscheduler.*"
+ignore_missing_imports = true
