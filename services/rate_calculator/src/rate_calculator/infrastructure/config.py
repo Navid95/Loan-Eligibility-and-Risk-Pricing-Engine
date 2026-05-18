@@ -9,3 +9,7 @@ class Settings(BaseSettings):
     OUTBOX_RELAY_INTERVAL_SECONDS: int = 5
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+
+
+def get_settings() -> Settings:
+    return Settings()  # type: ignore[call-arg]

@@ -4,7 +4,7 @@ from logging.config import fileConfig
 from alembic import context
 from sqlalchemy.ext.asyncio import create_async_engine
 
-from rate_calculator.infrastructure.config import Settings
+from rate_calculator.infrastructure.config import get_settings
 from rate_calculator.infrastructure.database.models import Base
 
 config = context.config
@@ -21,7 +21,7 @@ def do_run_migrations(connection):  # type: ignore[no-untyped-def]
 
 
 async def run_migrations_online() -> None:
-    settings = Settings()
+    settings = get_settings()
     engine = create_async_engine(settings.DATABASE_URL, echo=False)
     async with engine.connect() as conn:
         await conn.run_sync(do_run_migrations)
@@ -29,7 +29,7 @@ async def run_migrations_online() -> None:
 
 
 def run_migrations_offline() -> None:
-    settings = Settings()
+    settings = get_settings()
     context.configure(
         url=settings.DATABASE_URL,
         target_metadata=target_metadata,
