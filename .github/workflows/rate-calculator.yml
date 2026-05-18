@@ -1,0 +1,47 @@
+name: rate-calculator
+
+on:
+  push:
+    paths:
+      - "services/rate_calculator/**"
+      - "pyproject.toml"
+      - "uv.lock"
+  pull_request:
+    paths:
+      - "services/rate_calculator/**"
+      - "pyproject.toml"
+      - "uv.lock"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-caching: true
+
+      - name: Install dependencies
+        run: uv sync --frozen --package rate-calculator
+
+      - name: Format check
+        run: uv run --package rate-calculator ruff format --check services/rate_calculator/src services/rate_calculator/tests
+
+      - name: Lint
+        run: uv run --package rate-calculator ruff check services/rate_calculator/src services/rate_calculator/tests
+
+      - name: Type check
+        run: uv run --package rate-calculator mypy services/rate_calculator/src
+
+      - name: Unit tests
+        run: uv run --package rate-calculator pytest services/rate_calculator/tests/unit -v
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -f services/rate_calculator/Dockerfile -t rate-calculator:${{ github.sha }} .
