@@ -7,7 +7,18 @@ name = "rate-calculator"
 version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "sqlalchemy[asyncio]>=2.0",
+    "asyncpg>=0.30",
+    "alembic>=1.14",
+    "pydantic-settings>=2.7",
+    "aio-pika>=9.5",
+    "apscheduler>=3.11,<4",
 ]
+
+[project.scripts]
+seed-districts = "rate_calculator.infrastructure.seeder:main"
 
 [dependency-groups]
 dev = [
@@ -15,6 +26,7 @@ dev = [
     "pytest-asyncio>=0.24",
     "ruff>=0.9",
     "mypy>=1.13",
+    "testcontainers>=4.9",
 ]
 
 
