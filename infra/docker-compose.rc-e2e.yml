@@ -28,10 +28,9 @@ services:
       - "8000:8000"
       - "8444:8444"
     volumes:
-      - ./kong/kong.yml:/kong/kong.yml:ro
+      - ./kong/kong.rc-e2e.yml:/kong/kong.yml:ro
     depends_on:
       - rate-calculator
-      - audit-log
 
   rate-calculator-db:
     image: postgres:16-alpine
@@ -43,36 +42,6 @@ services:
       - rate-calculator-db-data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${RC_DB_USER} -d ${RC_DB_NAME}"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-
-  audit-log:
-    build:
-      context: ..
-      dockerfile: services/audit_log/Dockerfile
-    ports:
-      - "8002:8000"
-    environment:
-      DATABASE_URL: ${AL_DATABASE_URL}
-      RABBITMQ_URL: ${RABBITMQ_URL}
-      RABBITMQ_QUEUE: "audit.calculations"
-    depends_on:
-      audit-log-db:
-        condition: service_healthy
-      rabbitmq:
-        condition: service_healthy
-
-  audit-log-db:
-    image: postgres:16-alpine
-    environment:
-      POSTGRES_USER: ${AL_DB_USER}
-      POSTGRES_PASSWORD: ${AL_DB_PASSWORD}
-      POSTGRES_DB: ${AL_DB_NAME}
-    volumes:
-      - audit-log-db-data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${AL_DB_USER} -d ${AL_DB_NAME}"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -93,5 +62,4 @@ services:
 
 volumes:
   rate-calculator-db-data:
-  audit-log-db-data:
   rabbitmq-data:

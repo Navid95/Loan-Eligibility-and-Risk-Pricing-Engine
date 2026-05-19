@@ -1,0 +1,68 @@
+_format_version: "3.0"
+_transform: true
+
+services:
+  - name: rate-calculator
+    url: http://rate-calculator:8000
+    plugins:
+      - name: correlation-id
+        config:
+          header_name: X-Correlation-Id
+          generator: uuid
+          echo_downstream: true
+
+    routes:
+      - name: rates-route
+        paths:
+          - /api/v1/rates
+        strip_path: false
+        plugins:
+          - name: key-auth
+            config:
+              hide_credentials: true
+          - name: acl
+            config:
+              allow:
+                - broker-group
+              hide_groups_header: true
+
+      - name: config-route
+        paths:
+          - /api/v1/config
+        strip_path: false
+        plugins:
+          - name: basic-auth
+            config:
+              hide_credentials: true
+          - name: acl
+            config:
+              allow:
+                - admin-group
+              hide_groups_header: true
+
+consumers:
+  - username: broker-alice
+    keyauth_credentials:
+      - key: bkr-alice-a1b2c3d4e5f6
+    acls:
+      - group: broker-group
+
+  - username: broker-bob
+    keyauth_credentials:
+      - key: bkr-bob-f6e5d4c3b2a1
+    acls:
+      - group: broker-group
+
+  - username: admin-carol
+    basicauth_credentials:
+      - username: admin-carol
+        password: carol-adm-secret
+    acls:
+      - group: admin-group
+
+  - username: admin-dave
+    basicauth_credentials:
+      - username: admin-dave
+        password: dave-adm-secret
+    acls:
+      - group: admin-group

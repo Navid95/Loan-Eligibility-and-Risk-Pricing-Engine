@@ -1,0 +1,28 @@
+_format_version: "3.0"
+_transform: true
+
+services:
+  - name: audit-log
+    url: http://audit-log:8000
+    routes:
+      - name: records-route
+        paths:
+          - /api/v1/records
+        strip_path: false
+        plugins:
+          - name: basic-auth
+            config:
+              hide_credentials: true
+          - name: acl
+            config:
+              allow:
+                - auditor-group
+              hide_groups_header: true
+
+consumers:
+  - username: auditor-alice
+    basicauth_credentials:
+      - username: auditor-alice
+        password: alice-aud-secret
+    acls:
+      - group: auditor-group

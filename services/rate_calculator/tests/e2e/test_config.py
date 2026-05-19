@@ -126,4 +126,6 @@ class TestConfigEndpoints:
             assert response.status_code == 200
             assert response.json()["updated"] > 0
         finally:
-            admin_client.put("/api/v1/config/regions/Freiburg", json={"multiplier": "1.0"})
+            admin_client.put(
+                "/api/v1/config/regions/Freiburg", json={"multiplier": "1.0"}
+            )

@@ -76,7 +76,7 @@ jobs:
         run: uv sync --frozen --package rate-calculator
 
       - name: Start stack
-        run: docker compose -f infra/docker-compose.yml up -d --build
+        run: docker compose -f infra/docker-compose.rc-e2e.yml up -d --build
         env:
           RC_DB_USER: nordvik
           RC_DB_PASSWORD: nordvik
@@ -87,15 +87,15 @@ jobs:
       - name: Wait for Kong
         run: |
           for i in $(seq 1 30); do
-            curl -sf http://localhost:8000 && break
-            echo "Waiting... ($i)"
+            curl -s http://localhost:8444/status -o /dev/null && break
+            echo "Waiting for Kong... ($i)"
             sleep 3
           done
 
       - name: Seed data
         run: |
-          docker compose -f infra/docker-compose.yml cp data/districts.csv rate-calculator:/tmp/districts.csv
-          docker compose -f infra/docker-compose.yml exec rate-calculator \
+          docker compose -f infra/docker-compose.rc-e2e.yml cp data/districts.csv rate-calculator:/tmp/districts.csv
+          docker compose -f infra/docker-compose.rc-e2e.yml exec rate-calculator \
             uv run --package rate-calculator seed /tmp/districts.csv
 
       - name: Run e2e tests
@@ -103,4 +103,4 @@ jobs:
 
       - name: Tear down
         if: always()
-        run: docker compose -f infra/docker-compose.yml down -v
+        run: docker compose -f infra/docker-compose.rc-e2e.yml down -v

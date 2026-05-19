@@ -1,4 +1,6 @@
+import json
 import re
+import time
 from decimal import Decimal
 
 import httpx
@@ -107,3 +109,52 @@ class TestRatesEndpoint:
         )
 
         assert response.status_code == 422
+
+
+def _poll_amqp_message(
+    mgmt: httpx.Client,
+    *,
+    queue: str = "audit.calculations",
+    correlation_id: str,
+    max_seconds: int = 15,
+) -> dict:
+    deadline = time.monotonic() + max_seconds
+    while time.monotonic() < deadline:
+        resp = mgmt.post(
+            f"/api/queues/%2F/{queue}/get",
+            json={"count": 100, "ackmode": "ack_requeue_true", "encoding": "auto"},
+        )
+        resp.raise_for_status()
+        for msg in resp.json():
+            payload = json.loads(msg["payload"])
+            if payload.get("correlation_id") == correlation_id:
+                return payload
+        time.sleep(0.5)
+    raise TimeoutError(
+        f"no AMQP message for {correlation_id} on {queue} within {max_seconds}s"
+    )
+
+
+class TestRabbitMQPublication:
+    def test_successful_calculation_publishes_event(
+        self, broker_client: httpx.Client, mgmt_client: httpx.Client
+    ) -> None:
+        response = broker_client.post(
+            "/api/v1/rates/calculate",
+            json={"postal_code": "80331", "loan_term_months": 24, "credit_tier": "A"},
+        )
+        assert response.status_code == 200
+        data = response.json()
+        correlation_id = data["correlation_id"]
+
+        msg = _poll_amqp_message(mgmt_client, correlation_id=correlation_id)
+
+        assert msg["correlation_id"] == correlation_id
+        assert msg["credit_tier"] == "A"
+        assert msg["district"] == "München"
+        assert msg["base_rate"] == data["base_rate"]
+        assert msg["term_multiplier"] == data["term_multiplier"]
+        assert msg["credit_tier_multiplier"] == data["credit_tier_multiplier"]
+        assert msg["regional_risk_multiplier"] == data["regional_risk_multiplier"]
+        assert msg["final_rate"] == data["final_rate"]
+        assert "calculated_at" in msg
