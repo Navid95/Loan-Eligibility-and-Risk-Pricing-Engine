@@ -1,5 +1,4 @@
 from decimal import Decimal
-from uuid import UUID
 
 import pytest
 from fastapi.testclient import TestClient
@@ -41,7 +40,7 @@ class TestRatesEndpoint:
         assert "correlation_id" in data
         assert "calculated_at" in data
 
-    def test_calculate_rate_correlation_id_is_echoed_when_provided(
+    def test_calculate_rate_correlation_id_is_echoed_from_header(
         self,
         client: TestClient,
         postal_code_repo: FakePostalCodeMappingRepository,
@@ -55,35 +54,24 @@ class TestRatesEndpoint:
 
         response = client.post(
             "/api/v1/rates/calculate",
-            json={
-                "correlation_id": correlation_id,
-                "postal_code": "80331",
-                "loan_term_months": 24,
-                "credit_tier": "B",
-            },
+            json={"postal_code": "80331", "loan_term_months": 24, "credit_tier": "B"},
+            headers={"X-Correlation-Id": correlation_id},
         )
 
         assert response.status_code == 200
         assert response.json()["correlation_id"] == correlation_id
 
-    def test_calculate_rate_generates_correlation_id_when_omitted(
+    def test_calculate_rate_missing_correlation_id_header_returns_422(
         self,
         client: TestClient,
-        postal_code_repo: FakePostalCodeMappingRepository,
-        credit_tier_repo: FakeCreditTierConfigRepository,
-        district_repo: FakeDistrictRiskConfigRepository,
     ) -> None:
-        postal_code_repo.seed("80331", "München")
-        credit_tier_repo.seed("C", Decimal("1.2"))
-        district_repo.seed("München", Decimal("1.0"))
-
+        del client.headers["X-Correlation-Id"]
         response = client.post(
             "/api/v1/rates/calculate",
             json={"postal_code": "80331", "loan_term_months": 12, "credit_tier": "C"},
         )
 
-        assert response.status_code == 200
-        UUID(response.json()["correlation_id"])  # raises if not a valid UUID
+        assert response.status_code == 422
 
     def test_calculate_rate_unknown_postal_code_returns_404(
         self,

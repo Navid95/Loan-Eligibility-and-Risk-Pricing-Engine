@@ -1,9 +1,9 @@
 from datetime import datetime
 from decimal import Decimal
-from uuid import UUID, uuid4
+from uuid import UUID
 
-from fastapi import APIRouter, Depends
-from pydantic import BaseModel, Field
+from fastapi import APIRouter, Depends, Header
+from pydantic import BaseModel
 
 from rate_calculator.api.dependencies import (
     get_credit_tier_config_repo,
@@ -34,7 +34,6 @@ router = APIRouter(prefix="/rates", tags=["rates"])
 
 
 class CalculateRateRequest(BaseModel):
-    correlation_id: UUID = Field(default_factory=uuid4)
     postal_code: str
     loan_term_months: int
     credit_tier: str
@@ -55,6 +54,7 @@ class CalculateRateResponse(BaseModel):
 @router.post("/calculate", response_model=CalculateRateResponse, status_code=200)
 async def calculate_rate(
     body: CalculateRateRequest,
+    x_correlation_id: UUID = Header(),
     postal_code_mapping_repo: PostalCodeMappingRepository = Depends(
         get_postal_code_mapping_repo
     ),
@@ -78,7 +78,7 @@ async def calculate_rate(
     )
     result = await use_case.execute(
         CalculateLoanRateCommand(
-            correlation_id=body.correlation_id,
+            correlation_id=x_correlation_id,
             postal_code=body.postal_code,
             loan_term_months=body.loan_term_months,
             credit_tier=body.credit_tier,

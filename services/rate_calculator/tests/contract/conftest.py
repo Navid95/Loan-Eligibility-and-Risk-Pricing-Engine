@@ -83,4 +83,5 @@ def client(
     app.dependency_overrides[get_outbox_repo] = lambda: outbox_repo
 
     with TestClient(app) as c:
+        c.headers["X-Correlation-Id"] = "00000000-0000-0000-0000-000000000001"
         yield c
