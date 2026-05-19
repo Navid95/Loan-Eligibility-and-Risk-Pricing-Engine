@@ -18,7 +18,7 @@ dependencies = [
 ]
 
 [project.scripts]
-seed-districts = "rate_calculator.infrastructure.seeder:main"
+seed = "rate_calculator.infrastructure.seeder:main"
 
 [dependency-groups]
 dev = [
