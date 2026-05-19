@@ -18,8 +18,7 @@ services:
     routes:
       # -----------------------------------------------------------------------
       # Broker-facing: rate calculation
-      # Allowed group: broker-group (key-auth)
-      # Denied group:  admin-group (basic-auth credentials rejected by ACL)
+      # Authenticated via API key (key-auth). ACL restricts to broker-group.
       # -----------------------------------------------------------------------
       - name: rates-route
         paths:
@@ -27,9 +26,6 @@ services:
         strip_path: false
         plugins:
           - name: key-auth
-            config:
-              hide_credentials: true
-          - name: basic-auth
             config:
               hide_credentials: true
           - name: acl
@@ -40,17 +36,13 @@ services:
 
       # -----------------------------------------------------------------------
       # Admin-facing: configuration management
-      # Allowed group: admin-group (basic-auth)
-      # Denied group:  broker-group (API-key credentials rejected by ACL)
+      # Authenticated via HTTP Basic Auth. ACL restricts to admin-group.
       # -----------------------------------------------------------------------
       - name: config-route
         paths:
           - /api/v1/config
         strip_path: false
         plugins:
-          - name: key-auth
-            config:
-              hide_credentials: true
           - name: basic-auth
             config:
               hide_credentials: true
