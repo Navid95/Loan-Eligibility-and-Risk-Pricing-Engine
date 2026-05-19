@@ -1,0 +1,95 @@
+_format_version: "3.0"
+_transform: true
+
+services:
+  - name: rate-calculator
+    url: http://rate-calculator:8000
+    plugins:
+      # Inject a UUID correlation ID on every inbound request and echo it in
+      # the response. Downstream services receive X-Correlation-Id so
+      # calculation results and audit events can be correlated across the
+      # system. If the client already supplies the header it is overwritten.
+      - name: correlation-id
+        config:
+          header_name: X-Correlation-Id
+          generator: uuid
+          echo_downstream: true
+
+    routes:
+      # -----------------------------------------------------------------------
+      # Broker-facing: rate calculation
+      # Allowed group: broker-group (key-auth)
+      # Denied group:  admin-group (basic-auth credentials rejected by ACL)
+      # -----------------------------------------------------------------------
+      - name: rates-route
+        paths:
+          - /api/v1/rates
+        strip_path: false
+        plugins:
+          - name: key-auth
+            config:
+              hide_credentials: true
+          - name: basic-auth
+            config:
+              hide_credentials: true
+          - name: acl
+            config:
+              allow:
+                - broker-group
+              hide_groups_header: true
+
+      # -----------------------------------------------------------------------
+      # Admin-facing: configuration management
+      # Allowed group: admin-group (basic-auth)
+      # Denied group:  broker-group (API-key credentials rejected by ACL)
+      # -----------------------------------------------------------------------
+      - name: config-route
+        paths:
+          - /api/v1/config
+        strip_path: false
+        plugins:
+          - name: key-auth
+            config:
+              hide_credentials: true
+          - name: basic-auth
+            config:
+              hide_credentials: true
+          - name: acl
+            config:
+              allow:
+                - admin-group
+              hide_groups_header: true
+
+# -----------------------------------------------------------------------
+# Consumers
+# -----------------------------------------------------------------------
+
+consumers:
+  # Partner brokers — authenticate with a static API key passed in the
+  # apikey header (or ?apikey= query param, Kong default).
+  - username: broker-alice
+    keyauth_credentials:
+      - key: bkr-alice-a1b2c3d4e5f6
+    acls:
+      - group: broker-group
+
+  - username: broker-bob
+    keyauth_credentials:
+      - key: bkr-bob-f6e5d4c3b2a1
+    acls:
+      - group: broker-group
+
+  # Internal admins — authenticate with HTTP Basic Auth.
+  - username: admin-carol
+    basicauth_credentials:
+      - username: admin-carol
+        password: carol-adm-secret
+    acls:
+      - group: admin-group
+
+  - username: admin-dave
+    basicauth_credentials:
+      - username: admin-dave
+        password: dave-adm-secret
+    acls:
+      - group: admin-group

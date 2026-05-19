@@ -1,0 +1,72 @@
+{
+  "vhosts": [{ "name": "/" }],
+  "users": [
+    {
+      "name": "nordvik",
+      "password_hash": "nLHFPX6Di9u8EGl3+YSgRjaDMdKUzodY18cuKxfR5REpb58c",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": "administrator"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "nordvik",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "exchanges": [
+    {
+      "name": "audit.events",
+      "vhost": "/",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "audit.dlx",
+      "vhost": "/",
+      "type": "direct",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "queues": [
+    {
+      "name": "audit.calculations",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "audit.dlx"
+      }
+    },
+    {
+      "name": "audit.calculations.dlq",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "audit.events",
+      "vhost": "/",
+      "destination": "audit.calculations",
+      "destination_type": "queue",
+      "routing_key": "calculation.completed"
+    },
+    {
+      "source": "audit.dlx",
+      "vhost": "/",
+      "destination": "audit.calculations.dlq",
+      "destination_type": "queue",
+      "routing_key": "audit.calculations"
+    }
+  ]
+}
