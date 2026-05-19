@@ -61,3 +61,46 @@ jobs:
 
       - name: Build Docker image
         run: docker build -f services/rate_calculator/Dockerfile -t rate-calculator:${{ github.sha }} .
+
+  e2e-test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-caching: true
+
+      - name: Install dependencies
+        run: uv sync --frozen --package rate-calculator
+
+      - name: Start stack
+        run: docker compose -f infra/docker-compose.yml up -d --build
+        env:
+          RC_DB_USER: nordvik
+          RC_DB_PASSWORD: nordvik
+          RC_DB_NAME: rate_calculator
+          RC_DATABASE_URL: postgresql+asyncpg://nordvik:nordvik@rate-calculator-db:5432/rate_calculator
+          RABBITMQ_URL: amqp://nordvik:nordvik@rabbitmq:5672/
+
+      - name: Wait for Kong
+        run: |
+          for i in $(seq 1 30); do
+            curl -sf http://localhost:8000 && break
+            echo "Waiting... ($i)"
+            sleep 3
+          done
+
+      - name: Seed data
+        run: |
+          docker compose -f infra/docker-compose.yml cp data/districts.csv rate-calculator:/tmp/districts.csv
+          docker compose -f infra/docker-compose.yml exec rate-calculator \
+            uv run --package rate-calculator seed /tmp/districts.csv
+
+      - name: Run e2e tests
+        run: uv run --package rate-calculator pytest services/rate_calculator/tests/e2e -v
+
+      - name: Tear down
+        if: always()
+        run: docker compose -f infra/docker-compose.yml down -v
