@@ -9,6 +9,8 @@ WORKDIR /app
 COPY pyproject.toml uv.lock ./
 COPY services/rate_calculator/pyproject.toml ./services/rate_calculator/pyproject.toml
 COPY services/rate_calculator/src ./services/rate_calculator/src
+COPY services/rate_calculator/migrations ./services/rate_calculator/migrations
+COPY services/rate_calculator/alembic.ini ./services/rate_calculator/alembic.ini
 
 RUN uv sync --frozen --no-dev --package rate-calculator
 
@@ -23,5 +25,6 @@ WORKDIR /app
 EXPOSE 8000
 
 CMD ["uv", "run", "--package", "rate-calculator", \
-     "uvicorn", "rate_calculator.api.main:app", \
-     "--host", "0.0.0.0", "--port", "8000"]
+     "sh", "-c", \
+     "alembic -c services/rate_calculator/alembic.ini upgrade head && \
+      uvicorn rate_calculator.api.main:app --host 0.0.0.0 --port 8000"]
