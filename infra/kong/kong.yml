@@ -33,6 +33,12 @@ services:
               allow:
                 - broker-group
               hide_groups_header: true
+          - name: rate-limiting
+            config:
+              minute: 60
+              policy: local
+              limit_by: consumer
+              hide_client_headers: false
 
       # -----------------------------------------------------------------------
       # Admin-facing: configuration management

@@ -25,6 +25,12 @@ services:
               allow:
                 - broker-group
               hide_groups_header: true
+          - name: rate-limiting
+            config:
+              minute: 10000
+              policy: local
+              limit_by: consumer
+              hide_client_headers: false
 
       - name: config-route
         paths:
