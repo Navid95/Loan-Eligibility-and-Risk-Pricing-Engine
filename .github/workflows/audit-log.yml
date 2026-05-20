@@ -72,6 +72,9 @@ jobs:
           AL_DB_PASSWORD: nordvik
           AL_DB_NAME: audit_log
           AL_DATABASE_URL: postgresql+asyncpg://nordvik:nordvik@audit-log-db:5432/audit_log
+          AL_APP_DB_USER: audit_app
+          AL_APP_DB_PASSWORD: audit_app
+          AL_APP_DATABASE_URL: postgresql+asyncpg://audit_app:audit_app@audit-log-db:5432/audit_log
           RABBITMQ_URL: amqp://nordvik:nordvik@rabbitmq:5672/
 
       - name: Wait for Kong
