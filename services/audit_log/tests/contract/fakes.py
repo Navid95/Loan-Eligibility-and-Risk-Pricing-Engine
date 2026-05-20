@@ -25,9 +25,7 @@ class FakeCalculationRecordRepository(CalculationRecordRepository):
         page: int,
         page_size: int,
     ) -> tuple[list[CalculationRecord], int]:
-        matching = [
-            r for r in self._records if from_dt <= r.calculated_at <= to_dt
-        ]
+        matching = [r for r in self._records if from_dt <= r.calculated_at <= to_dt]
         matching.sort(key=lambda r: r.calculated_at, reverse=True)
         total = len(matching)
         offset = (page - 1) * page_size

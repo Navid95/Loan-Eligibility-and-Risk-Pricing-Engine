@@ -58,15 +58,11 @@ class TestListRecordsValidation:
         assert resp.status_code == 422
 
     def test_from_equal_to_returns_422(self, audit_client: httpx.Client) -> None:
-        resp = audit_client.get(
-            "/api/v1/records", params={"from": _FROM, "to": _FROM}
-        )
+        resp = audit_client.get("/api/v1/records", params={"from": _FROM, "to": _FROM})
         assert resp.status_code == 422
 
     def test_from_after_to_returns_422(self, audit_client: httpx.Client) -> None:
-        resp = audit_client.get(
-            "/api/v1/records", params={"from": _TO, "to": _FROM}
-        )
+        resp = audit_client.get("/api/v1/records", params={"from": _TO, "to": _FROM})
         assert resp.status_code == 422
 
     def test_page_size_above_100_returns_422(self, audit_client: httpx.Client) -> None:
@@ -162,9 +158,7 @@ class TestCalculationRecordFlow:
         ):
             assert field in record, f"missing field in audit record: {field}"
 
-    def test_pagination_metadata_is_correct(
-        self, audit_client: httpx.Client
-    ) -> None:
+    def test_pagination_metadata_is_correct(self, audit_client: httpx.Client) -> None:
         resp = audit_client.get(
             "/api/v1/records",
             params={"from": _FROM, "to": _TO, "page": 1, "page_size": 5},

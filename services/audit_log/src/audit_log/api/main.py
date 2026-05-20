@@ -1,5 +1,5 @@
 import logging
-from collections.abc import AsyncGenerator, Callable
+from collections.abc import AsyncGenerator, Awaitable, Callable
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request, Response
@@ -11,20 +11,23 @@ configure_logging()
 
 logger = logging.getLogger(__name__)
 
-from audit_log.api.error_handlers import (
+from audit_log.api.error_handlers import (  # noqa: E402
     application_validation_handler,
     domain_error_handler,
     not_found_handler,
 )
-from audit_log.api.routers import records
-from audit_log.application.exceptions import NotFoundError, ValidationError
-from audit_log.domain.exceptions import DomainError
-from audit_log.infrastructure.config import get_settings
-from audit_log.infrastructure.database.engine import (
+from audit_log.api.routers import records  # noqa: E402
+from audit_log.application.exceptions import (  # noqa: E402
+    NotFoundError,
+    ValidationError,
+)
+from audit_log.domain.exceptions import DomainError  # noqa: E402
+from audit_log.infrastructure.config import get_settings  # noqa: E402
+from audit_log.infrastructure.database.engine import (  # noqa: E402
     create_engine,
     create_session_factory,
 )
-from audit_log.infrastructure.messaging.consumer import AuditEventConsumer
+from audit_log.infrastructure.messaging.consumer import AuditEventConsumer  # noqa: E402
 
 
 @asynccontextmanager
@@ -52,7 +55,9 @@ app = FastAPI(title="Audit Log", lifespan=lifespan)
 
 
 @app.middleware("http")
-async def log_requests(request: Request, call_next: Callable) -> Response:
+async def log_requests(
+    request: Request, call_next: Callable[[Request], Awaitable[Response]]
+) -> Response:
     correlation_id = request.headers.get("X-Correlation-Id", "")
     try:
         response = await call_next(request)
