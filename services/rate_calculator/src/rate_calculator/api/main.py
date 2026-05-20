@@ -1,8 +1,15 @@
-from collections.abc import AsyncGenerator
+import logging
+from collections.abc import AsyncGenerator, Callable
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, Response
 from fastapi.responses import JSONResponse
+
+from rate_calculator.infrastructure.logging_config import configure_logging
+
+configure_logging()
+
+logger = logging.getLogger(__name__)
 
 from rate_calculator.api.error_handlers import (
     application_validation_handler,
@@ -60,6 +67,41 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
 
 
 app = FastAPI(title="Rate Calculator", lifespan=lifespan)
+
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next: Callable) -> Response:
+    correlation_id = request.headers.get("X-Correlation-Id", "")
+    try:
+        response = await call_next(request)
+    except Exception:
+        logger.error(
+            "%s %s — unhandled exception",
+            request.method,
+            request.url.path,
+            exc_info=True,
+            extra={"correlation_id": correlation_id},
+        )
+        raise
+    status = response.status_code
+    if status >= 500:
+        logger.error(
+            "%s %s → %d",
+            request.method,
+            request.url.path,
+            status,
+            extra={"correlation_id": correlation_id},
+        )
+    elif status >= 400:
+        logger.warning(
+            "%s %s → %d",
+            request.method,
+            request.url.path,
+            status,
+            extra={"correlation_id": correlation_id},
+        )
+    return response
+
 
 app.include_router(rates.router, prefix="/api/v1")
 app.include_router(config.router, prefix="/api/v1")
