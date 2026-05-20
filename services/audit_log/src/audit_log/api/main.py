@@ -1,8 +1,15 @@
-from collections.abc import AsyncGenerator
+import logging
+from collections.abc import AsyncGenerator, Callable
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, Response
 from fastapi.responses import JSONResponse
+
+from audit_log.infrastructure.logging_config import configure_logging
+
+configure_logging()
+
+logger = logging.getLogger(__name__)
 
 from audit_log.api.error_handlers import (
     application_validation_handler,
@@ -42,6 +49,41 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
 
 
 app = FastAPI(title="Audit Log", lifespan=lifespan)
+
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next: Callable) -> Response:
+    correlation_id = request.headers.get("X-Correlation-Id", "")
+    try:
+        response = await call_next(request)
+    except Exception:
+        logger.error(
+            "%s %s — unhandled exception",
+            request.method,
+            request.url.path,
+            exc_info=True,
+            extra={"correlation_id": correlation_id},
+        )
+        raise
+    status = response.status_code
+    if status >= 500:
+        logger.error(
+            "%s %s → %d",
+            request.method,
+            request.url.path,
+            status,
+            extra={"correlation_id": correlation_id},
+        )
+    elif status >= 400:
+        logger.warning(
+            "%s %s → %d",
+            request.method,
+            request.url.path,
+            status,
+            extra={"correlation_id": correlation_id},
+        )
+    return response
+
 
 app.include_router(records.router, prefix="/api/v1")
 

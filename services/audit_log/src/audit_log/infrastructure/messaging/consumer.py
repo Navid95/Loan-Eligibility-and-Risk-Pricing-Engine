@@ -54,7 +54,7 @@ class AuditEventConsumer:
         # Connect to the pre-declared queue without modifying its configuration
         queue = await channel.declare_queue(self._queue_name, passive=True)
         await queue.consume(self._handle_message)
-        logger.info("consuming from queue '%s'", self._queue_name)
+        logger.debug("consuming from queue '%s'", self._queue_name)
 
     async def stop(self) -> None:
         if self._connection is not None:
