@@ -61,21 +61,23 @@ class AuditEventConsumer:
             await self._connection.close()
 
     async def _handle_message(self, message: AbstractIncomingMessage) -> None:
+        # Permanent failures (malformed payload) — route to DLQ immediately.
         try:
             payload: dict[str, str] = json.loads(message.body)
             recorded_at = datetime.now(UTC)
             record = _deserialise(payload, recorded_at)
-            async with self._session_factory() as session:
-                async with session.begin():
-                    repo = SqlAlchemyCalculationRecordRepository(session)
-                    # INSERT ... ON CONFLICT DO NOTHING — duplicate correlation_ids
-                    # are silently skipped; the session commits an empty transaction
-                    # and the message is ACK'd normally.
-                    await repo.save(record)
         except Exception:
-            logger.exception("failed to process audit event, sending to DLQ")
+            logger.exception("failed to deserialise audit event, routing to DLQ")
             await message.nack(requeue=False)
             return
+
+        # Transient failures (DB connection issues) — let the exception propagate.
+        # The message stays unacked; aio-pika's robust connection requeues it on
+        # channel recovery. ON CONFLICT DO NOTHING absorbs any duplicate on retry.
+        async with self._session_factory() as session:
+            async with session.begin():
+                repo = SqlAlchemyCalculationRecordRepository(session)
+                await repo.save(record)
 
         try:
             await message.ack()

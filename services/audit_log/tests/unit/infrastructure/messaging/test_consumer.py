@@ -120,7 +120,7 @@ class TestAuditEventConsumerHandleMessage:
         message.nack.assert_awaited_once_with(requeue=False)
         message.ack.assert_not_awaited()
 
-    async def test_nacks_without_requeue_on_db_error(self) -> None:
+    async def test_raises_on_db_error(self) -> None:
         consumer, _, _ = _make_consumer()
         message = _make_message()
 
@@ -130,9 +130,10 @@ class TestAuditEventConsumerHandleMessage:
             new_callable=AsyncMock,
             side_effect=RuntimeError("db down"),
         ):
-            await consumer._handle_message(message)
+            with pytest.raises(RuntimeError):
+                await consumer._handle_message(message)
 
-        message.nack.assert_awaited_once_with(requeue=False)
+        message.nack.assert_not_awaited()
         message.ack.assert_not_awaited()
 
     async def test_does_not_nack_when_ack_fails(self) -> None:
