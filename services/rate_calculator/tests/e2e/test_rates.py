@@ -38,8 +38,14 @@ class TestRatesEndpoint:
         assert Decimal(data["base_rate"]) == Decimal("1.03")
         assert Decimal(data["term_multiplier"]) == Decimal("1.0")
         assert Decimal(data["credit_tier_multiplier"]) == Decimal("1.05")
-        assert Decimal(data["regional_risk_multiplier"]) == Decimal("1.0")
         assert data["district"] == "München"
+        expected_final = (
+            Decimal(data["base_rate"])
+            * Decimal(data["term_multiplier"])
+            * Decimal(data["credit_tier_multiplier"])
+            * Decimal(data["regional_risk_multiplier"])
+        )
+        assert Decimal(data["final_rate"]) == expected_final
 
     def test_correlation_id_is_a_kong_generated_uuid(
         self, broker_client: httpx.Client
