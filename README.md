@@ -155,9 +155,13 @@ uv run --package rate-calculator pytest services/rate_calculator/tests/integrati
 uv run --package rate-calculator pytest services/rate_calculator/tests/pact -v
 ```
 
-**E2E** — full stack (Kong + service + RabbitMQ + PostgreSQL). Start the isolated E2E compose stack first:
+**E2E** — full stack (Kong + service + RabbitMQ + PostgreSQL). Start the isolated E2E compose stack, seed reference data, then run tests:
 ```bash
 docker compose -f infra/docker-compose.rc-e2e.yml up -d
+docker compose -f infra/docker-compose.rc-e2e.yml run --rm \
+  -v "$(pwd)/data/districts.csv:/tmp/districts.csv:ro" \
+  rate-calculator \
+  uv run --package rate-calculator seed /tmp/districts.csv
 uv run --package rate-calculator pytest services/rate_calculator/tests/e2e -v
 ```
 
