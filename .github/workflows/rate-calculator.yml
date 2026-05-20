@@ -95,8 +95,9 @@ jobs:
       - name: Seed data
         run: |
           docker compose -f infra/docker-compose.rc-e2e.yml cp data/districts.csv rate-calculator:/tmp/districts.csv
+          docker compose -f infra/docker-compose.rc-e2e.yml cp data/district_risk_scores.csv rate-calculator:/tmp/district_risk_scores.csv
           docker compose -f infra/docker-compose.rc-e2e.yml exec rate-calculator \
-            uv run --package rate-calculator seed /tmp/districts.csv
+            uv run --package rate-calculator seed /tmp/districts.csv /tmp/district_risk_scores.csv
 
       - name: Run e2e tests
         run: uv run --package rate-calculator pytest services/rate_calculator/tests/e2e -v
