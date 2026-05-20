@@ -24,7 +24,7 @@ from audit_log.infrastructure.messaging.consumer import AuditEventConsumer
 async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     settings = get_settings()
 
-    engine = create_engine(settings.DATABASE_URL)
+    engine = create_engine(settings.APP_DATABASE_URL)
     session_factory = create_session_factory(engine)
     app.state.session_factory = session_factory
 

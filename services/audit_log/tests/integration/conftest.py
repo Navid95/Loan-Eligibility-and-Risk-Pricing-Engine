@@ -34,6 +34,7 @@ def apply_migrations(db_url: str) -> None:
     env = {
         **os.environ,
         "DATABASE_URL": db_url,
+        "APP_DATABASE_URL": db_url,
         "RABBITMQ_URL": "amqp://localhost",
     }
     original_environ = os.environ.copy()

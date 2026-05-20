@@ -55,6 +55,7 @@ services:
       - "8002:8000"
     environment:
       DATABASE_URL: ${AL_DATABASE_URL}
+      APP_DATABASE_URL: ${AL_APP_DATABASE_URL}
       RABBITMQ_URL: ${RABBITMQ_URL}
       RABBITMQ_QUEUE: "audit.calculations"
     depends_on:
@@ -69,7 +70,10 @@ services:
       POSTGRES_USER: ${AL_DB_USER}
       POSTGRES_PASSWORD: ${AL_DB_PASSWORD}
       POSTGRES_DB: ${AL_DB_NAME}
+      APP_DB_USER: ${AL_APP_DB_USER}
+      APP_DB_PASSWORD: ${AL_APP_DB_PASSWORD}
     volumes:
+      - ./postgres/audit-log-init.sh:/docker-entrypoint-initdb.d/01-create-app-user.sh:ro
       - audit-log-db-data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${AL_DB_USER} -d ${AL_DB_NAME}"]
