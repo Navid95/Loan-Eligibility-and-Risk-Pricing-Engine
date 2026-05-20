@@ -1,0 +1,16 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "risk-model"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=2.2",
+    "scikit-learn>=1.5",
+    "numpy>=1.26",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/risk_model"]

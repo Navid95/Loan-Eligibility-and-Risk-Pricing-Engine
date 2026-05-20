@@ -1,0 +1,384 @@
+REGION3,REGION2,REGION1,cluster_id,east_fraction,multiplier
+Breisgau-Hochschwarzwald,Freiburg,Baden-Württemberg,5,0.0,0.90
+Emmendingen,Freiburg,Baden-Württemberg,5,0.0,0.90
+Freiburg im Breisgau,Freiburg,Baden-Württemberg,5,0.0,0.90
+Konstanz,Freiburg,Baden-Württemberg,5,0.0,0.90
+Lörrach,Freiburg,Baden-Württemberg,5,0.0,0.90
+Ortenaukreis,Freiburg,Baden-Württemberg,5,0.0,0.90
+Rottweil,Freiburg,Baden-Württemberg,5,0.0,0.90
+Schwarzwald-Baar-Kreis,Freiburg,Baden-Württemberg,5,0.0,0.90
+Tuttlingen,Freiburg,Baden-Württemberg,5,0.0,0.90
+Waldshut,Freiburg,Baden-Württemberg,5,0.0,0.90
+Baden-Baden,Karlsruhe,Baden-Württemberg,5,0.0,0.90
+Calw,Karlsruhe,Baden-Württemberg,5,0.0,0.90
+Enzkreis,Karlsruhe,Baden-Württemberg,5,0.0,0.90
+Freudenstadt,Karlsruhe,Baden-Württemberg,5,0.0,0.90
+Heidelberg,Karlsruhe,Baden-Württemberg,5,0.0,0.90
+Karlsruhe,Karlsruhe,Baden-Württemberg,5,0.0,0.90
+Mannheim,Karlsruhe,Baden-Württemberg,5,0.0,0.90
+Neckar-Odenwald-Kreis,Karlsruhe,Baden-Württemberg,5,0.0,0.90
+Pforzheim,Karlsruhe,Baden-Württemberg,5,0.0,0.90
+Rastatt,Karlsruhe,Baden-Württemberg,5,0.0,0.90
+Rhein-Neckar-Kreis,Karlsruhe,Baden-Württemberg,5,0.0,0.90
+Böblingen,Stuttgart,Baden-Württemberg,5,0.0,0.90
+Esslingen,Stuttgart,Baden-Württemberg,5,0.0,0.90
+Göppingen,Stuttgart,Baden-Württemberg,5,0.0,0.90
+Heidenheim,Stuttgart,Baden-Württemberg,0,0.0,0.90
+Heilbronn,Stuttgart,Baden-Württemberg,5,0.0,0.90
+Hohenlohekreis,Stuttgart,Baden-Württemberg,5,0.0,0.90
+Ludwigsburg,Stuttgart,Baden-Württemberg,5,0.0,0.90
+Main-Tauber-Kreis,Stuttgart,Baden-Württemberg,5,0.0,0.90
+Ostalbkreis,Stuttgart,Baden-Württemberg,5,0.0,0.90
+Rems-Murr-Kreis,Stuttgart,Baden-Württemberg,5,0.0,0.90
+Schwäbisch Hall,Stuttgart,Baden-Württemberg,5,0.0,0.90
+Stuttgart,Stuttgart,Baden-Württemberg,5,0.0,0.90
+Alb-Donau-Kreis,Tübingen,Baden-Württemberg,5,0.0,0.90
+Biberach,Tübingen,Baden-Württemberg,5,0.0,0.90
+Bodenseekreis,Tübingen,Baden-Württemberg,5,0.0,0.90
+Ravensburg,Tübingen,Baden-Württemberg,5,0.0,0.90
+Reutlingen,Tübingen,Baden-Württemberg,5,0.0,0.90
+Sigmaringen,Tübingen,Baden-Württemberg,5,0.0,0.90
+Tübingen,Tübingen,Baden-Württemberg,5,0.0,0.90
+Ulm,Tübingen,Baden-Württemberg,5,0.0,0.90
+Zollernalbkreis,Tübingen,Baden-Württemberg,5,0.0,0.90
+Ansbach,Mittelfranken,Bayern,0,0.0,0.90
+Erlangen,Mittelfranken,Bayern,0,0.0,0.90
+Erlangen-Höchstadt,Mittelfranken,Bayern,0,0.0,0.90
+Fürth,Mittelfranken,Bayern,0,0.0,0.90
+Neustadt an der Aisch-Bad Windsheim,Mittelfranken,Bayern,0,0.0,0.90
+Nürnberg,Mittelfranken,Bayern,0,0.0,0.90
+Nürnberger Land,Mittelfranken,Bayern,0,0.0,0.90
+Roth,Mittelfranken,Bayern,0,0.0,0.90
+Schwabach,Mittelfranken,Bayern,0,0.0,0.90
+Weißenburg-Gunzenhausen,Mittelfranken,Bayern,0,0.0,0.90
+Deggendorf,Niederbayern,Bayern,0,0.0,0.90
+Dingolfing-Landau,Niederbayern,Bayern,0,0.0,0.90
+Freyung-Grafenau,Niederbayern,Bayern,0,0.0,0.90
+Kelheim,Niederbayern,Bayern,0,0.0,0.90
+Landshut,Niederbayern,Bayern,0,0.0,0.90
+Passau,Niederbayern,Bayern,0,0.0,0.90
+Regen,Niederbayern,Bayern,0,0.0,0.90
+Rottal-Inn,Niederbayern,Bayern,0,0.0,0.90
+Straubing,Niederbayern,Bayern,0,0.0,0.90
+Straubing-Bogen,Niederbayern,Bayern,0,0.0,0.90
+Altötting,Oberbayern,Bayern,0,0.0,0.90
+Bad Tölz-Wolfratshausen,Oberbayern,Bayern,0,0.0,0.90
+Berchtesgadener Land,Oberbayern,Bayern,0,0.0,0.90
+Dachau,Oberbayern,Bayern,0,0.0,0.90
+Ebersberg,Oberbayern,Bayern,0,0.0,0.90
+Eichstätt,Oberbayern,Bayern,0,0.0,0.90
+Erding,Oberbayern,Bayern,0,0.0,0.90
+Freising,Oberbayern,Bayern,0,0.0,0.90
+Fürstenfeldbruck,Oberbayern,Bayern,0,0.0,0.90
+Garmisch-Partenkirchen,Oberbayern,Bayern,0,0.0,0.90
+Ingolstadt,Oberbayern,Bayern,0,0.0,0.90
+Landsberg am Lech,Oberbayern,Bayern,0,0.0,0.90
+Miesbach,Oberbayern,Bayern,0,0.0,0.90
+Mühldorf am Inn,Oberbayern,Bayern,0,0.0,0.90
+München,Oberbayern,Bayern,0,0.0,0.90
+Neuburg-Schrobenhausen,Oberbayern,Bayern,0,0.0,0.90
+Pfaffenhofen an der Ilm,Oberbayern,Bayern,0,0.0,0.90
+Rosenheim,Oberbayern,Bayern,0,0.0,0.90
+Starnberg,Oberbayern,Bayern,0,0.0,0.90
+Traunstein,Oberbayern,Bayern,0,0.0,0.90
+Weilheim-Schongau,Oberbayern,Bayern,0,0.0,0.90
+Bamberg,Oberfranken,Bayern,4,0.5246,1.05
+Bayreuth,Oberfranken,Bayern,0,0.0,0.90
+Coburg,Oberfranken,Bayern,4,0.5246,1.05
+Forchheim,Oberfranken,Bayern,0,0.0,0.90
+Hof,Oberfranken,Bayern,4,0.5246,1.05
+Kronach,Oberfranken,Bayern,4,0.5246,1.05
+Kulmbach,Oberfranken,Bayern,4,0.5246,1.05
+Lichtenfels,Oberfranken,Bayern,4,0.5246,1.05
+Wunsiedel im Fichtelgebirge,Oberfranken,Bayern,0,0.0,0.90
+Amberg,Oberpfalz,Bayern,0,0.0,0.90
+Amberg-Sulzbach,Oberpfalz,Bayern,0,0.0,0.90
+Cham,Oberpfalz,Bayern,0,0.0,0.90
+Neumarkt in der Oberpfalz,Oberpfalz,Bayern,0,0.0,0.90
+Neustadt an der Waldnaab,Oberpfalz,Bayern,0,0.0,0.90
+Regensburg,Oberpfalz,Bayern,0,0.0,0.90
+Schwandorf,Oberpfalz,Bayern,0,0.0,0.90
+Tirschenreuth,Oberpfalz,Bayern,0,0.0,0.90
+Weiden in der Oberpfalz,Oberpfalz,Bayern,0,0.0,0.90
+Aichach-Friedberg,Schwaben,Bayern,0,0.0,0.90
+Augsburg,Schwaben,Bayern,0,0.0,0.90
+Dillingen an der Donau,Schwaben,Bayern,0,0.0,0.90
+Donau-Ries,Schwaben,Bayern,0,0.0,0.90
+Günzburg,Schwaben,Bayern,0,0.0,0.90
+Kaufbeuren,Schwaben,Bayern,0,0.0,0.90
+Kempten,Schwaben,Bayern,0,0.0,0.90
+Lindau,Schwaben,Bayern,5,0.0,0.90
+Memmingen,Schwaben,Bayern,0,0.0,0.90
+Neu-Ulm,Schwaben,Bayern,0,0.0,0.90
+Oberallgäu,Schwaben,Bayern,0,0.0,0.90
+Ostallgäu,Schwaben,Bayern,0,0.0,0.90
+Unterallgäu,Schwaben,Bayern,0,0.0,0.90
+Aschaffenburg,Unterfranken,Bayern,5,0.0,0.90
+Bad Kissingen,Unterfranken,Bayern,4,0.5246,1.05
+Haßberge,Unterfranken,Bayern,4,0.5246,1.05
+Kitzingen,Unterfranken,Bayern,4,0.5246,1.05
+Main-Spessart,Unterfranken,Bayern,5,0.0,0.90
+Miltenberg,Unterfranken,Bayern,5,0.0,0.90
+Rhön-Grabfeld,Unterfranken,Bayern,4,0.5246,1.05
+Schweinfurt,Unterfranken,Bayern,4,0.5246,1.05
+Würzburg,Unterfranken,Bayern,5,0.0,0.90
+Berlin,,Berlin,2,1.0,1.20
+Barnim,,Brandenburg,2,1.0,1.20
+Brandenburg an der Havel,,Brandenburg,2,1.0,1.20
+Cottbus,,Brandenburg,2,1.0,1.20
+Dahme-Spreewald,,Brandenburg,2,1.0,1.20
+Elbe-Elster,,Brandenburg,2,1.0,1.20
+Frankfurt (Oder),,Brandenburg,2,1.0,1.20
+Havelland,,Brandenburg,2,1.0,1.20
+Märkisch-Oderland,,Brandenburg,2,1.0,1.20
+Oberhavel,,Brandenburg,2,1.0,1.20
+Oberspreewald-Lausitz,,Brandenburg,2,1.0,1.20
+Oder-Spree,,Brandenburg,2,1.0,1.20
+Ostprignitz-Ruppin,,Brandenburg,2,1.0,1.20
+Potsdam,,Brandenburg,2,1.0,1.20
+Potsdam-Mittelmark,,Brandenburg,2,1.0,1.20
+Prignitz,,Brandenburg,2,1.0,1.20
+Spree-Neiße,,Brandenburg,2,1.0,1.20
+Teltow-Fläming,,Brandenburg,2,1.0,1.20
+Uckermark,,Brandenburg,2,1.0,1.20
+Bremen,,Bremen,1,0.0179,0.90
+Bremerhaven,,Bremen,1,0.0179,0.90
+Hamburg,,Hamburg,1,0.0179,0.90
+Bergstraße,Darmstadt,Hessen,5,0.0,0.90
+Darmstadt,Darmstadt,Hessen,5,0.0,0.90
+Darmstadt-Dieburg,Darmstadt,Hessen,5,0.0,0.90
+Frankfurt am Main,Darmstadt,Hessen,5,0.0,0.90
+Groß-Gerau,Darmstadt,Hessen,5,0.0,0.90
+Hochtaunuskreis,Darmstadt,Hessen,5,0.0,0.90
+Main-Kinzig-Kreis,Darmstadt,Hessen,5,0.0,0.90
+Main-Taunus-Kreis,Darmstadt,Hessen,5,0.0,0.90
+Odenwaldkreis,Darmstadt,Hessen,5,0.0,0.90
+Offenbach,Darmstadt,Hessen,5,0.0,0.90
+Offenbach am Main,Darmstadt,Hessen,5,0.0,0.90
+Rheingau-Taunus-Kreis,Darmstadt,Hessen,5,0.0,0.90
+Wetteraukreis,Darmstadt,Hessen,5,0.0,0.90
+Wiesbaden,Darmstadt,Hessen,5,0.0,0.90
+Gießen,Gießen,Hessen,5,0.0,0.90
+Lahn-Dill-Kreis,Gießen,Hessen,3,0.0,0.90
+Limburg-Weilburg,Gießen,Hessen,3,0.0,0.90
+Marburg-Biedenkopf,Gießen,Hessen,3,0.0,0.90
+Vogelsbergkreis,Gießen,Hessen,5,0.0,0.90
+Fulda,Kassel,Hessen,4,0.5246,1.05
+Hersfeld-Rotenburg,Kassel,Hessen,4,0.5246,1.05
+Kassel,Kassel,Hessen,4,0.5246,1.05
+Schwalm-Eder-Kreis,Kassel,Hessen,4,0.5246,1.05
+Waldeck-Frankenberg,Kassel,Hessen,3,0.0,0.90
+Werra-Meißner-Kreis,Kassel,Hessen,4,0.5246,1.05
+Landkreis Rostock,,Mecklenburg-Vorpommern,2,1.0,1.20
+Ludwigslust-Parchim,,Mecklenburg-Vorpommern,2,1.0,1.20
+Mecklenburgische Seenplatte,,Mecklenburg-Vorpommern,2,1.0,1.20
+Nordwestmecklenburg,,Mecklenburg-Vorpommern,1,0.0179,0.90
+Rostock,,Mecklenburg-Vorpommern,2,1.0,1.20
+Schwerin,,Mecklenburg-Vorpommern,2,1.0,1.20
+Vorpommern-Greifswald,,Mecklenburg-Vorpommern,2,1.0,1.20
+Vorpommern-Rügen,,Mecklenburg-Vorpommern,2,1.0,1.20
+Braunschweig,Braunschweig,Niedersachsen,4,0.5246,1.05
+Gifhorn,Braunschweig,Niedersachsen,4,0.5246,1.05
+Goslar,Braunschweig,Niedersachsen,4,0.5246,1.05
+Göttingen,Braunschweig,Niedersachsen,4,0.5246,1.05
+Helmstedt,Braunschweig,Niedersachsen,4,0.5246,1.05
+Northeim,Braunschweig,Niedersachsen,4,0.5246,1.05
+Osterode am Harz,Braunschweig,Niedersachsen,4,0.5246,1.05
+Peine,Braunschweig,Niedersachsen,4,0.5246,1.05
+Salzgitter,Braunschweig,Niedersachsen,4,0.5246,1.05
+Wolfenbüttel,Braunschweig,Niedersachsen,4,0.5246,1.05
+Wolfsburg,Braunschweig,Niedersachsen,4,0.5246,1.05
+Diepholz,Hannover,Niedersachsen,1,0.0179,0.90
+Hameln-Pyrmont,Hannover,Niedersachsen,1,0.0179,0.90
+Hildesheim,Hannover,Niedersachsen,4,0.5246,1.05
+Holzminden,Hannover,Niedersachsen,1,0.0179,0.90
+Nienburg,Hannover,Niedersachsen,1,0.0179,0.90
+Nienburg (Weser),Hannover,Niedersachsen,1,0.0179,0.90
+Region Hannover,Hannover,Niedersachsen,1,0.0179,0.90
+Schaumburg,Hannover,Niedersachsen,1,0.0179,0.90
+Celle,Lüneburg,Niedersachsen,1,0.0179,0.90
+Cuxhaven,Lüneburg,Niedersachsen,1,0.0179,0.90
+Harburg,Lüneburg,Niedersachsen,1,0.0179,0.90
+Heidekreis,Lüneburg,Niedersachsen,1,0.0179,0.90
+Lüchow-Dannenberg,Lüneburg,Niedersachsen,4,0.5246,1.05
+Lüneburg,Lüneburg,Niedersachsen,1,0.0179,0.90
+Osterholz,Lüneburg,Niedersachsen,1,0.0179,0.90
+Rotenburg,Lüneburg,Niedersachsen,1,0.0179,0.90
+Soltau-Fallingbostel,Lüneburg,Niedersachsen,1,0.0179,0.90
+Stade,Lüneburg,Niedersachsen,1,0.0179,0.90
+Uelzen,Lüneburg,Niedersachsen,1,0.0179,0.90
+Verden,Lüneburg,Niedersachsen,1,0.0179,0.90
+Ammerland,Weser-Ems,Niedersachsen,1,0.0179,0.90
+Aurich,Weser-Ems,Niedersachsen,1,0.0179,0.90
+Cloppenburg,Weser-Ems,Niedersachsen,1,0.0179,0.90
+Delmenhorst,Weser-Ems,Niedersachsen,1,0.0179,0.90
+Emden,Weser-Ems,Niedersachsen,1,0.0179,0.90
+Emsland,Weser-Ems,Niedersachsen,3,0.0,0.90
+Friesland,Weser-Ems,Niedersachsen,1,0.0179,0.90
+Grafschaft Bentheim,Weser-Ems,Niedersachsen,3,0.0,0.90
+Leer,Weser-Ems,Niedersachsen,1,0.0179,0.90
+Oldenburg,Weser-Ems,Niedersachsen,1,0.0179,0.90
+Osnabrück,Weser-Ems,Niedersachsen,1,0.0179,0.90
+Vechta,Weser-Ems,Niedersachsen,1,0.0179,0.90
+Wesermarsch,Weser-Ems,Niedersachsen,1,0.0179,0.90
+Wilhelmshaven,Weser-Ems,Niedersachsen,1,0.0179,0.90
+Wittmund,Weser-Ems,Niedersachsen,1,0.0179,0.90
+Bochum,Arnsberg,Nordrhein-Westfalen,3,0.0,0.90
+Dortmund,Arnsberg,Nordrhein-Westfalen,3,0.0,0.90
+Ennepe-Ruhr-Kreis,Arnsberg,Nordrhein-Westfalen,3,0.0,0.90
+Hagen,Arnsberg,Nordrhein-Westfalen,3,0.0,0.90
+Hamm,Arnsberg,Nordrhein-Westfalen,3,0.0,0.90
+Herne,Arnsberg,Nordrhein-Westfalen,3,0.0,0.90
+Hochsauerlandkreis,Arnsberg,Nordrhein-Westfalen,3,0.0,0.90
+Märkischer Kreis,Arnsberg,Nordrhein-Westfalen,3,0.0,0.90
+Olpe,Arnsberg,Nordrhein-Westfalen,3,0.0,0.90
+Siegen-Wittgenstein,Arnsberg,Nordrhein-Westfalen,3,0.0,0.90
+Soest,Arnsberg,Nordrhein-Westfalen,3,0.0,0.90
+Unna,Arnsberg,Nordrhein-Westfalen,3,0.0,0.90
+Bielefeld,Detmold,Nordrhein-Westfalen,1,0.0179,0.90
+Gütersloh,Detmold,Nordrhein-Westfalen,3,0.0,0.90
+Herford,Detmold,Nordrhein-Westfalen,1,0.0179,0.90
+Höxter,Detmold,Nordrhein-Westfalen,1,0.0179,0.90
+Lippe,Detmold,Nordrhein-Westfalen,1,0.0179,0.90
+Minden-Lübbecke,Detmold,Nordrhein-Westfalen,1,0.0179,0.90
+Paderborn,Detmold,Nordrhein-Westfalen,1,0.0179,0.90
+Duisburg,Düsseldorf,Nordrhein-Westfalen,3,0.0,0.90
+Düsseldorf,Düsseldorf,Nordrhein-Westfalen,3,0.0,0.90
+Essen,Düsseldorf,Nordrhein-Westfalen,3,0.0,0.90
+Kleve,Düsseldorf,Nordrhein-Westfalen,3,0.0,0.90
+Krefeld,Düsseldorf,Nordrhein-Westfalen,3,0.0,0.90
+Mettmann,Düsseldorf,Nordrhein-Westfalen,3,0.0,0.90
+Mönchengladbach,Düsseldorf,Nordrhein-Westfalen,3,0.0,0.90
+Mülheim an der Ruhr,Düsseldorf,Nordrhein-Westfalen,3,0.0,0.90
+Oberhausen,Düsseldorf,Nordrhein-Westfalen,3,0.0,0.90
+Remscheid,Düsseldorf,Nordrhein-Westfalen,3,0.0,0.90
+Rhein-Kreis Neuss,Düsseldorf,Nordrhein-Westfalen,3,0.0,0.90
+Solingen,Düsseldorf,Nordrhein-Westfalen,3,0.0,0.90
+Viersen,Düsseldorf,Nordrhein-Westfalen,3,0.0,0.90
+Wesel,Düsseldorf,Nordrhein-Westfalen,3,0.0,0.90
+Wuppertal,Düsseldorf,Nordrhein-Westfalen,3,0.0,0.90
+Aachen,Köln,Nordrhein-Westfalen,3,0.0,0.90
+Bonn,Köln,Nordrhein-Westfalen,3,0.0,0.90
+Düren,Köln,Nordrhein-Westfalen,3,0.0,0.90
+Euskirchen,Köln,Nordrhein-Westfalen,3,0.0,0.90
+Heinsberg,Köln,Nordrhein-Westfalen,3,0.0,0.90
+Köln,Köln,Nordrhein-Westfalen,3,0.0,0.90
+Leverkusen,Köln,Nordrhein-Westfalen,3,0.0,0.90
+Oberbergischer Kreis,Köln,Nordrhein-Westfalen,3,0.0,0.90
+Rhein-Erft-Kreis,Köln,Nordrhein-Westfalen,3,0.0,0.90
+Rhein-Sieg-Kreis,Köln,Nordrhein-Westfalen,3,0.0,0.90
+Rheinisch-Bergischer Kreis,Köln,Nordrhein-Westfalen,3,0.0,0.90
+Borken,Münster,Nordrhein-Westfalen,3,0.0,0.90
+Bottrop,Münster,Nordrhein-Westfalen,3,0.0,0.90
+Coesfeld,Münster,Nordrhein-Westfalen,3,0.0,0.90
+Gelsenkirchen,Münster,Nordrhein-Westfalen,3,0.0,0.90
+Münster,Münster,Nordrhein-Westfalen,3,0.0,0.90
+Recklinghausen,Münster,Nordrhein-Westfalen,3,0.0,0.90
+Steinfurt,Münster,Nordrhein-Westfalen,3,0.0,0.90
+Warendorf,Münster,Nordrhein-Westfalen,3,0.0,0.90
+Ahrweiler,Koblenz,Rheinland-Pfalz,3,0.0,0.90
+Altenkirchen,Koblenz,Rheinland-Pfalz,3,0.0,0.90
+Altenkirchen (Westerwald),Koblenz,Rheinland-Pfalz,3,0.0,0.90
+Bad Kreuznach,Koblenz,Rheinland-Pfalz,5,0.0,0.90
+Birkenfeld,Koblenz,Rheinland-Pfalz,3,0.0,0.90
+Cochem-Zell,Koblenz,Rheinland-Pfalz,3,0.0,0.90
+Koblenz,Koblenz,Rheinland-Pfalz,3,0.0,0.90
+Mayen-Koblenz,Koblenz,Rheinland-Pfalz,3,0.0,0.90
+Neuwied,Koblenz,Rheinland-Pfalz,3,0.0,0.90
+Rhein-Hunsrück-Kreis,Koblenz,Rheinland-Pfalz,3,0.0,0.90
+Rhein-Lahn-Kreis,Koblenz,Rheinland-Pfalz,3,0.0,0.90
+Westerwaldkreis,Koblenz,Rheinland-Pfalz,3,0.0,0.90
+Alzey-Worms,Rheinhessen-Pfalz,Rheinland-Pfalz,5,0.0,0.90
+Bad Dürkheim,Rheinhessen-Pfalz,Rheinland-Pfalz,5,0.0,0.90
+Donnersbergkreis,Rheinhessen-Pfalz,Rheinland-Pfalz,5,0.0,0.90
+Frankenthal,Rheinhessen-Pfalz,Rheinland-Pfalz,5,0.0,0.90
+Germersheim,Rheinhessen-Pfalz,Rheinland-Pfalz,5,0.0,0.90
+Kaiserslautern,Rheinhessen-Pfalz,Rheinland-Pfalz,5,0.0,0.90
+Kusel,Rheinhessen-Pfalz,Rheinland-Pfalz,5,0.0,0.90
+Landau in der Pfalz,Rheinhessen-Pfalz,Rheinland-Pfalz,5,0.0,0.90
+Ludwigshafen am Rhein,Rheinhessen-Pfalz,Rheinland-Pfalz,5,0.0,0.90
+Mainz,Rheinhessen-Pfalz,Rheinland-Pfalz,5,0.0,0.90
+Mainz-Bingen,Rheinhessen-Pfalz,Rheinland-Pfalz,5,0.0,0.90
+Neustadt an der Weinstraße,Rheinhessen-Pfalz,Rheinland-Pfalz,5,0.0,0.90
+Pirmasens,Rheinhessen-Pfalz,Rheinland-Pfalz,5,0.0,0.90
+Rhein-Pfalz-Kreis,Rheinhessen-Pfalz,Rheinland-Pfalz,5,0.0,0.90
+Speyer,Rheinhessen-Pfalz,Rheinland-Pfalz,5,0.0,0.90
+Südliche Weinstraße,Rheinhessen-Pfalz,Rheinland-Pfalz,5,0.0,0.90
+Südwestpfalz,Rheinhessen-Pfalz,Rheinland-Pfalz,5,0.0,0.90
+Worms,Rheinhessen-Pfalz,Rheinland-Pfalz,5,0.0,0.90
+Zweibrücken,Rheinhessen-Pfalz,Rheinland-Pfalz,5,0.0,0.90
+Bernkastel-Wittlich,Trier,Rheinland-Pfalz,3,0.0,0.90
+Eifelkreis Bitburg-Prüm,Trier,Rheinland-Pfalz,3,0.0,0.90
+Trier,Trier,Rheinland-Pfalz,3,0.0,0.90
+Trier-Saarburg,Trier,Rheinland-Pfalz,3,0.0,0.90
+Vulkaneifel,Trier,Rheinland-Pfalz,3,0.0,0.90
+Merzig-Wadern,,Saarland,3,0.0,0.90
+Neunkirchen,,Saarland,5,0.0,0.90
+Regionalverband Saarbrücken,,Saarland,5,0.0,0.90
+Saarlouis,,Saarland,3,0.0,0.90
+Saarpfalz-Kreis,,Saarland,5,0.0,0.90
+Sankt Wendel,,Saarland,3,0.0,0.90
+Chemnitz,Chemnitz,Sachsen,2,1.0,1.20
+Erzgebirgskreis,Chemnitz,Sachsen,2,1.0,1.20
+Mittelsachsen,Chemnitz,Sachsen,2,1.0,1.20
+Vogtlandkreis,Chemnitz,Sachsen,4,0.5246,1.05
+Zwickau,Chemnitz,Sachsen,2,1.0,1.20
+Bautzen,Dresden,Sachsen,2,1.0,1.20
+Dresden,Dresden,Sachsen,2,1.0,1.20
+Görlitz,Dresden,Sachsen,2,1.0,1.20
+Meißen,Dresden,Sachsen,2,1.0,1.20
+Sächsische Schweiz-Osterzgebirge,Dresden,Sachsen,2,1.0,1.20
+Leipzig,Leipzig,Sachsen,2,1.0,1.20
+Nordsachsen,Leipzig,Sachsen,2,1.0,1.20
+Altmarkkreis Salzwedel,,Sachsen-Anhalt,4,0.5246,1.05
+Anhalt-Bitterfeld,,Sachsen-Anhalt,2,1.0,1.20
+Börde,,Sachsen-Anhalt,4,0.5246,1.05
+Burgenlandkreis,,Sachsen-Anhalt,4,0.5246,1.05
+Dessau-Roßlau,,Sachsen-Anhalt,2,1.0,1.20
+Halle,,Sachsen-Anhalt,4,0.5246,1.05
+Harz,,Sachsen-Anhalt,4,0.5246,1.05
+Jerichower Land,,Sachsen-Anhalt,2,1.0,1.20
+Magdeburg,,Sachsen-Anhalt,4,0.5246,1.05
+Mansfeld-Südharz,,Sachsen-Anhalt,4,0.5246,1.05
+Saalekreis,,Sachsen-Anhalt,4,0.5246,1.05
+Salzlandkreis,,Sachsen-Anhalt,4,0.5246,1.05
+Stendal,,Sachsen-Anhalt,2,1.0,1.20
+Wittenberg,,Sachsen-Anhalt,2,1.0,1.20
+Dithmarschen,,Schleswig-Holstein,1,0.0179,0.90
+Flensburg,,Schleswig-Holstein,1,0.0179,0.90
+Herzogtum Lauenburg,,Schleswig-Holstein,1,0.0179,0.90
+Kiel,,Schleswig-Holstein,1,0.0179,0.90
+Lübeck,,Schleswig-Holstein,1,0.0179,0.90
+Neumünster,,Schleswig-Holstein,1,0.0179,0.90
+Nordfriesland,,Schleswig-Holstein,1,0.0179,0.90
+Ostholstein,,Schleswig-Holstein,1,0.0179,0.90
+Pinneberg,,Schleswig-Holstein,1,0.0179,0.90
+Plön,,Schleswig-Holstein,1,0.0179,0.90
+Rendsburg-Eckernförde,,Schleswig-Holstein,1,0.0179,0.90
+Schleswig-Flensburg,,Schleswig-Holstein,1,0.0179,0.90
+Segeberg,,Schleswig-Holstein,1,0.0179,0.90
+Steinburg,,Schleswig-Holstein,1,0.0179,0.90
+Stormarn,,Schleswig-Holstein,1,0.0179,0.90
+Altenburger Land,,Thüringen,2,1.0,1.20
+Eichsfeld,,Thüringen,4,0.5246,1.05
+Eisenach,,Thüringen,4,0.5246,1.05
+Erfurt,,Thüringen,4,0.5246,1.05
+Gera,,Thüringen,4,0.5246,1.05
+Gotha,,Thüringen,4,0.5246,1.05
+Greiz,,Thüringen,4,0.5246,1.05
+Hildburghausen,,Thüringen,4,0.5246,1.05
+Ilm-Kreis,,Thüringen,4,0.5246,1.05
+Jena,,Thüringen,4,0.5246,1.05
+Kyffhäuserkreis,,Thüringen,4,0.5246,1.05
+Nordhausen,,Thüringen,4,0.5246,1.05
+Saale-Holzland-Kreis,,Thüringen,4,0.5246,1.05
+Saale-Orla-Kreis,,Thüringen,4,0.5246,1.05
+Saalfeld-Rudolstadt,,Thüringen,4,0.5246,1.05
+Schmalkalden-Meiningen,,Thüringen,4,0.5246,1.05
+Sömmerda,,Thüringen,4,0.5246,1.05
+Sonneberg,,Thüringen,4,0.5246,1.05
+Suhl,,Thüringen,4,0.5246,1.05
+Unstrut-Hainich-Kreis,,Thüringen,4,0.5246,1.05
+Wartburgkreis,,Thüringen,4,0.5246,1.05
+Weimar,,Thüringen,4,0.5246,1.05
+Weimarer Land,,Thüringen,4,0.5246,1.05
