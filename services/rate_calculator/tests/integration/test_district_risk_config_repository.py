@@ -73,15 +73,19 @@ class TestSqlAlchemyDistrictRiskConfigRepository:
         names = {r.district.name for r in results}
         assert names == {"Freiburg-Stadt", "Breisgau", "Emmendingen"}
 
-    async def test_save_many(self, session: AsyncSession) -> None:
+    async def test_save_many_updates_all_existing_rows(self, session: AsyncSession) -> None:
         repo = SqlAlchemyDistrictRiskConfigRepository(session)
-        configs = [_make_config(f"District{i}") for i in range(5)]
-
-        await repo.save_many(configs)
-
+        configs = [_make_config(f"District{i}", "1.0") for i in range(5)]
         for config in configs:
+            await repo.save(config)
+
+        updated = [_make_config(f"District{i}", "1.5") for i in range(5)]
+        await repo.save_many(updated)
+
+        for config in updated:
             retrieved = await repo.get(config.district)
             assert retrieved is not None
+            assert retrieved.multiplier == Multiplier(Decimal("1.5"))
 
     async def test_save_many_upserts_multiplier(self, session: AsyncSession) -> None:
         repo = SqlAlchemyDistrictRiskConfigRepository(session)

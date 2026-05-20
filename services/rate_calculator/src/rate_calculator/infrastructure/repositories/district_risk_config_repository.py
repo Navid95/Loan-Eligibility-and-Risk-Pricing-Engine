@@ -1,4 +1,4 @@
-from sqlalchemy import func, select
+from sqlalchemy import case, func, select, update
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -76,22 +76,22 @@ class SqlAlchemyDistrictRiskConfigRepository(DistrictRiskConfigRepository):
         if not configs:
             return
         stmt = (
-            insert(DistrictRiskConfigModel)
-            .values(
-                [
-                    {
-                        "district": c.district.name,
-                        "multiplier": c.multiplier.value,
-                        "region2": "",
-                    }
-                    for c in configs
-                ]
+            update(DistrictRiskConfigModel)
+            .where(
+                DistrictRiskConfigModel.district.in_(
+                    [c.district.name for c in configs]
+                )
             )
-            .on_conflict_do_update(
-                index_elements=["district"],
-                set_={
-                    "multiplier": insert(DistrictRiskConfigModel).excluded.multiplier
-                },
+            .values(
+                multiplier=case(
+                    *[
+                        (
+                            DistrictRiskConfigModel.district == c.district.name,
+                            c.multiplier.value,
+                        )
+                        for c in configs
+                    ]
+                )
             )
         )
         await self._session.execute(stmt)

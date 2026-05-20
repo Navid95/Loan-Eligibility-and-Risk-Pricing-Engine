@@ -14,7 +14,7 @@ class RabbitMQPublisher:
 
     async def connect(self) -> None:
         self._connection = await aio_pika.connect_robust(self._rabbitmq_url)
-        channel = await self._connection.channel()
+        channel = await self._connection.channel(publisher_confirms=True)
         self._exchange = await channel.declare_exchange(
             self._exchange_name,
             aio_pika.ExchangeType.TOPIC,
@@ -34,4 +34,4 @@ class RabbitMQPublisher:
             content_type="application/json",
             delivery_mode=aio_pika.DeliveryMode.PERSISTENT,
         )
-        await self._exchange.publish(message, routing_key=self._routing_key)
+        await self._exchange.publish(message, routing_key=self._routing_key, timeout=30)
