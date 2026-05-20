@@ -1,5 +1,5 @@
 import logging
-from collections.abc import AsyncGenerator, Callable
+from collections.abc import AsyncGenerator, Awaitable, Callable
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request, Response
@@ -11,28 +11,28 @@ configure_logging()
 
 logger = logging.getLogger(__name__)
 
-from rate_calculator.api.error_handlers import (
+from rate_calculator.api.error_handlers import (  # noqa: E402
     application_validation_handler,
     conflict_handler,
     domain_error_handler,
     not_found_handler,
 )
-from rate_calculator.api.routers import config, rates
-from rate_calculator.application.exceptions import (
+from rate_calculator.api.routers import config, rates  # noqa: E402
+from rate_calculator.application.exceptions import (  # noqa: E402
     ConflictError,
     NotFoundError,
     ValidationError,
 )
-from rate_calculator.domain.exceptions import DomainError
-from rate_calculator.infrastructure.config import get_settings
-from rate_calculator.infrastructure.database.engine import (
+from rate_calculator.domain.exceptions import DomainError  # noqa: E402
+from rate_calculator.infrastructure.config import get_settings  # noqa: E402
+from rate_calculator.infrastructure.database.engine import (  # noqa: E402
     create_engine,
     create_session_factory,
 )
-from rate_calculator.infrastructure.messaging.rabbitmq_publisher import (
+from rate_calculator.infrastructure.messaging.rabbitmq_publisher import (  # noqa: E402
     RabbitMQPublisher,
 )
-from rate_calculator.infrastructure.outbox.relay import OutboxRelay
+from rate_calculator.infrastructure.outbox.relay import OutboxRelay  # noqa: E402
 
 
 @asynccontextmanager
@@ -70,7 +70,9 @@ app = FastAPI(title="Rate Calculator", lifespan=lifespan)
 
 
 @app.middleware("http")
-async def log_requests(request: Request, call_next: Callable) -> Response:
+async def log_requests(
+    request: Request, call_next: Callable[[Request], Awaitable[Response]]
+) -> Response:
     correlation_id = request.headers.get("X-Correlation-Id", "")
     try:
         response = await call_next(request)

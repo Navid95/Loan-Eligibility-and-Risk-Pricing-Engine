@@ -78,9 +78,7 @@ class SqlAlchemyDistrictRiskConfigRepository(DistrictRiskConfigRepository):
         stmt = (
             update(DistrictRiskConfigModel)
             .where(
-                DistrictRiskConfigModel.district.in_(
-                    [c.district.name for c in configs]
-                )
+                DistrictRiskConfigModel.district.in_([c.district.name for c in configs])
             )
             .values(
                 multiplier=case(

@@ -73,7 +73,9 @@ class TestSqlAlchemyDistrictRiskConfigRepository:
         names = {r.district.name for r in results}
         assert names == {"Freiburg-Stadt", "Breisgau", "Emmendingen"}
 
-    async def test_save_many_updates_all_existing_rows(self, session: AsyncSession) -> None:
+    async def test_save_many_updates_all_existing_rows(
+        self, session: AsyncSession
+    ) -> None:
         repo = SqlAlchemyDistrictRiskConfigRepository(session)
         configs = [_make_config(f"District{i}", "1.0") for i in range(5)]
         for config in configs:
