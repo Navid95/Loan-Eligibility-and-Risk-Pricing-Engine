@@ -6,11 +6,13 @@ on:
       - "services/audit_log/**"
       - "pyproject.toml"
       - "uv.lock"
+      - ".github/workflows/audit-log.yml"
   pull_request:
     paths:
       - "services/audit_log/**"
       - "pyproject.toml"
       - "uv.lock"
+      - ".github/workflows/audit-log.yml"
 
 jobs:
   test:

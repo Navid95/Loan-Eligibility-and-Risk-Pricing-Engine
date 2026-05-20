@@ -6,11 +6,13 @@ on:
       - "services/rate_calculator/**"
       - "pyproject.toml"
       - "uv.lock"
+      - ".github/workflows/rate-calculator.yml"
   pull_request:
     paths:
       - "services/rate_calculator/**"
       - "pyproject.toml"
       - "uv.lock"
+      - ".github/workflows/rate-calculator.yml"
 
 jobs:
   test:
